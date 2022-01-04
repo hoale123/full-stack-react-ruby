@@ -3,8 +3,7 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/" do
-    "Home Page"
-    "Testing"
+    {food: "apple"}.to_json
   end
 
     
