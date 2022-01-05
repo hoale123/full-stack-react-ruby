@@ -12,7 +12,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>GoodBye</h1>
+      <h1>Flatiron School: Phase 3 Project</h1>
+      <h3>Created by Hoa Le and Morgan Byrne</h3>
     </div>
   )
 }
