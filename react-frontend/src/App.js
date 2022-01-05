@@ -3,15 +3,16 @@ import './App.css';
 import {useEffect} from "react"
 
 function App() {
+
   useEffect(() => {
-    fetch("http://localhost:9292/test")
+    fetch("http://localhost:9290/test")
   .then((r) => r.json())
-  .then((data) => console.log(data));
+  .then((data) => console.log("hello"));
   },[])
 
   return (
     <div className="App">
-      <h1>hello</h1>
+      <h1>GoodBye</h1>
     </div>
   )
 }
