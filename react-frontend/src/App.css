@@ -92,6 +92,10 @@ input:focus {
   margin-top: 0.5rem;
 }
 
+.addToCart {
+  margin-left: 0.5rem;
+}
+
 @media (min-width: 768px) {
   .cards {
     display: flex;
@@ -113,4 +117,8 @@ input:focus {
   .card {
     width: calc(20% - 2rem);
   }
+}
+
+.col-4{
+  text-align: center;
 }

@@ -3,21 +3,25 @@ import './App.css';
 import { useEffect, useState } from "react"
 import Products from './Products';
 import Header from './Header';
+import CartContainer from './CartContainer';
 
 function App() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("newest");
+  const [shoppingCart, setCart] = useState([]);
 
-
-  // useEffect(() => {
-  //   fetch("http://localhost:9290/test")
-  // .then((r) => r.json())
-  // .then((data) => console.log("hello"));
-  // },[])
+  function handleAddProduct(product) {
+    const inCart = shoppingCart.find((p) => p.id === product.id);
+    if (inCart) {
+      setCart(shoppingCart.map(p => p.id === product.id ? {...inCart, qty: inCart.qty + 1}:p))
+    } else {
+      setCart([...shoppingCart, { ...product, qty: 1 }]);
+    }
+  }
 
   useEffect(() => {
-    fetch("http://localhost:9001/products")
+    fetch("http://localhost:9292/products")
     .then(r=>r.json())
     .then(data=>setProducts(data))
 }, [])
@@ -52,7 +56,17 @@ function App() {
         handleSort={handleSort}
       />
       <h2>Shop All</h2>
-      <Products  products={updatedListings} />
+      <Products  
+      products={updatedListings} 
+      handleAddProduct={handleAddProduct}
+      />
+      <div className="col-4">
+          <CartContainer
+          handleAddProduct={handleAddProduct}
+          shoppingCart={shoppingCart}
+            // onRemoveStock={handleRemoveStock}
+          />
+        </div>
     </div>
   )
 }
