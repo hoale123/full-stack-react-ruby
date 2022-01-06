@@ -7,10 +7,12 @@ class ApplicationController < Sinatra::Base
     products.to_json
   end
 
-    
-  # get "/test" do
-  #   { message: "Good luck with your project!" }.to_json
-  # end
+  patch "/products" do
+    product = Product.find(params[:id])
+    product.update({name: params[:name], description:params[:description],price:params[:price],status:params[:status],image:params[:image],likes:params[:likes]})
+    product.to_json
+  end
+
 
 
 end

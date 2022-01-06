@@ -92,16 +92,13 @@ input:focus {
   margin-top: 0.5rem;
 }
 
-.addToCart {
-  margin-left: 0.5rem;
-}
 
 @media (min-width: 768px) {
   .cards {
     display: flex;
     flex-wrap: wrap;
   }
-
+  
   .card {
     width: calc(33% - 2rem);
   }
@@ -121,4 +118,49 @@ input:focus {
 
 .col-4{
   text-align: center;
+}
+
+button.add{
+  background-color: #40c0f0;
+  width:  1.5rem;
+}
+button.remove{
+  background-color: #f04040;
+  width:  1.5rem;
+}
+button.badge{
+  background-color: #f04040;
+  width:  1.5rem;
+  border: none;
+  color: #ffffff;
+}
+
+.text-right{
+  text-align: right;
+}
+.addToCart {
+  margin-left: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.row.center {
+  align-items: center;
+}
+.col-1 {
+  flex: 1;
+}
+.col-2 {
+  flex: 2;
+}
+.block {
+  background-color: #e0e0e0;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
 }

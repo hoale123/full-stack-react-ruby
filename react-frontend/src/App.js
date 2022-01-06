@@ -21,6 +21,15 @@ function App() {
     }
   }
 
+  function handleRemoveProduct(product) {
+    const inCart = shoppingCart.find((p) => p.id === product.id);
+    if(inCart.qty === 1){
+      setCart(shoppingCart.filter(p => p.id !== product.id))
+    } else {
+      setCart(shoppingCart.map(p => p.id === product.id ? {...inCart, qty: inCart.qty - 1}:p))
+    }
+  }
+
   function handleCheckout(cart) {
     console.log("ready to checkout")
   }
@@ -70,7 +79,7 @@ function App() {
           handleAddProduct={handleAddProduct}
           shoppingCart={shoppingCart}
           handleCheckout={handleCheckout}
-            // onRemoveStock={handleRemoveStock}
+          handleRemoveProduct={handleRemoveProduct}
           />
         </div>
     </div>
