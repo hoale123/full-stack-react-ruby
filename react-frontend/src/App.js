@@ -20,6 +20,10 @@ function App() {
     }
   }
 
+  function handleCheckout(cart) {
+    console.log("ready to checkout")
+  }
+
   useEffect(() => {
     fetch("http://localhost:9292/products")
     .then(r=>r.json())
@@ -64,6 +68,7 @@ function App() {
           <CartContainer
           handleAddProduct={handleAddProduct}
           shoppingCart={shoppingCart}
+          handleCheckout={handleCheckout}
             // onRemoveStock={handleRemoveStock}
           />
         </div>
