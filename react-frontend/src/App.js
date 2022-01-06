@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Products from './Products';
 import Header from './Header';
 import CartContainer from './CartContainer';
+import ShoppingCart from './ShoppingCart';
 
 function App() {
   const [products, setProducts] = useState([]);
