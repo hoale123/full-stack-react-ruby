@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Products from './Products';
 import Header from './Header';
 import CartContainer from './CartContainer';
+import ShoppingCart from './ShoppingCart';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -18,6 +19,10 @@ function App() {
     } else {
       setCart([...shoppingCart, { ...product, qty: 1 }]);
     }
+  }
+
+  function handleCheckout(cart) {
+    console.log("ready to checkout")
   }
 
   useEffect(() => {
@@ -64,6 +69,7 @@ function App() {
           <CartContainer
           handleAddProduct={handleAddProduct}
           shoppingCart={shoppingCart}
+          handleCheckout={handleCheckout}
             // onRemoveStock={handleRemoveStock}
           />
         </div>
