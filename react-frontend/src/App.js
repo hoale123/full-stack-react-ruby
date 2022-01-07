@@ -30,6 +30,11 @@ function App() {
     }
   }
 
+  // function handleProductLike(product){
+    // use the product passed as an argument to update products state
+    // map over the products array and replace the product that matches the product id of the product passed as an argument
+  // }
+
   function handleRemoveProduct(product) {
     const inCart = shoppingCart.find((p) => p.id === product.id);
     if(inCart.qty === 1){
