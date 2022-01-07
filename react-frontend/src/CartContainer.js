@@ -2,7 +2,7 @@ import React from "react";
 
 
 function CartContainer({ shoppingCart, handleAddProduct, handleRemoveProduct, handleCheckout }) {
-    const itemPrice = shoppingCart.reduce((a , c) => a + c.price * c.qty, 0)
+    const itemPrice = shoppingCart.reduce((a,c) => a + c.price * c.qty, 0)
     const taxPrice =itemPrice * 0.07;
     const discountPrice = itemPrice > 200 ? itemPrice * 0.10 : 0;
     const totalPrice = itemPrice + taxPrice - discountPrice

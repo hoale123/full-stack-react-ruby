@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import CartContainer from "./CartContainer";
-import Button from "./Button";
 
 function OrderForm({ handleAddProduct, shoppingCart, handleCheckout, handleRemoveProduct}) {
     const [formData, setFormData] = useState({
@@ -17,18 +16,27 @@ function OrderForm({ handleAddProduct, shoppingCart, handleCheckout, handleRemov
     
     function handleSubmit(e) {
         e.preventDefault();
-        const newOrder = {
-            ...formData, 
-            user_id: "",
-            product_id: "",
-            status: "New",
-            created_at: "today"
-    };
+        fetch("http://localhost:9292/orders", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                ...formData, 
+                user_id: "",
+                product_id: "",
+                status: "New",
+                created_at: "today"
+            }),
+        })
+        .then(r=>r.json())
+        .then(data=>console.log(data))
     }
     
     return (
         <div className="container">
             <h3>Order Checkout</h3>
+            <CartContainer />
                 <form className="order-form" onSubmit={()=>handleSubmit()}>
                 <input
                   type="text"
