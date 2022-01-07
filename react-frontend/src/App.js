@@ -84,32 +84,39 @@ function App() {
 
       <Switch>
           <Route path="/order">
+            <CartContainer
+              handleAddProduct={handleAddProduct}
+              shoppingCart={shoppingCart}
+              handleCheckout={handleCheckout}
+              handleRemoveProduct={handleRemoveProduct}
+            />
             <OrderForm
               handleCheckout={handleCheckout}
             />
           </Route>
           <Route path="/">
-          <Header 
-            handleSearch={handleSearch}  
-            sortBy={sortBy} 
-            handleSort={handleSort}
-          />
+            <Header 
+              handleSearch={handleSearch}  
+              sortBy={sortBy} 
+              handleSort={handleSort}
+            />
             <Products
               products={updatedListings} 
               handleAddProduct={handleAddProduct}
             />
             <div className="col-4">
-                <CartContainer
-                handleAddProduct={handleAddProduct}
-                shoppingCart={shoppingCart}
-                handleCheckout={handleCheckout}
-                handleRemoveProduct={handleRemoveProduct}
-                />
+              <CartContainer
+              handleAddProduct={handleAddProduct}
+              shoppingCart={shoppingCart}
+              handleCheckout={handleCheckout}
+              handleRemoveProduct={handleRemoveProduct}
+              />
+            <form action="http://localhost:3000/order">
+              <button onClick={() => handleCheckout(shoppingCart)} className="orderCheckout">🛒 <em>Proceed to Checkout</em>🛒</button>
+            </form>  
             </div>
           </Route>
-
       </Switch>
-
     </div>
     </BrowserRouter>
   )

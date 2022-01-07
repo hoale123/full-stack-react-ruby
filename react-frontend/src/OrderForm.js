@@ -54,7 +54,6 @@ function OrderForm({ handleAddProduct, shoppingCart, handleCheckout, handleRemov
                   value="Submit Order"
                   className="submit"
                 />
-                <Button>Submit Order</Button>
             </form>
         </div> 
     )
