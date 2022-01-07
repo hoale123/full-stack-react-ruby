@@ -53,8 +53,6 @@ function CartContainer({ shoppingCart, handleAddProduct, handleRemoveProduct, ha
 
               </>
             ) }
-    <br></br>
-    <button onClick={() => handleCheckout(shoppingCart)} className="orderCheckout">🛒 <em>Proceed to Checkout</em>🛒</button>
       </aside>
     )
 }
