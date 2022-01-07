@@ -21,7 +21,7 @@ function ProductCard ({ product, handleAddProduct }) {
     .catch((error)=> {
       console.error("Error:", error);
     })
-    .then(setAddLikes((likes) => likes +1))
+    .then(setAddLikes(numbers))
   }
 
   return (
