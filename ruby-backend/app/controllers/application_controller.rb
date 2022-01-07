@@ -14,6 +14,17 @@ class ApplicationController < Sinatra::Base
     # {message: likes added}
   end
 
+  get "/orders" do
+    orders = Order.all
+    orders.to_json
+  end
+
+  get "/users" do
+    users = User.all
+    users.to_json
+  end
+
+  
 
 
 end
