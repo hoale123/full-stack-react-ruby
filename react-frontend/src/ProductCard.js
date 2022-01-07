@@ -6,7 +6,7 @@ function ProductCard ({ product, handleAddProduct }) {
   const [addLikes, setAddLikes] = useState(likes);
 
   function handleLikes() {
-    setAddLikes((addLikes) => addLikes +1);
+    // setAddLikes((addLikes) => addLikes +1);
     // let numbers = likes + 1;
     fetch(`http://localhost:9292/products/${id}`, {
       method: "PATCH",
@@ -14,7 +14,7 @@ function ProductCard ({ product, handleAddProduct }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        likes: addLikes,
+        likes: product.likes += 1,
       }),
     })
     .then(r=>r.json())
@@ -22,6 +22,7 @@ function ProductCard ({ product, handleAddProduct }) {
     .catch((error)=> {
       console.error("Error:", error);
     })
+    .then(setAddLikes((likes) => likes +1))
   }
 
   // function handleAdd(){
