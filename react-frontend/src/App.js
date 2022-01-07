@@ -12,6 +12,7 @@ import {
   Switch,
   Route,
   Link,
+  useHistory
 } from "react-router-dom";
 
 
@@ -40,10 +41,10 @@ function App() {
   }
 
   function handleCheckout(shoppingCart) {
-    return shoppingCart.map((product)=> (
-      console.log(product)
+    console.log(shoppingCart)
+    // return shoppingCart.map((product)=> (
+    //   console.log(product)
       // <ProductCard key={product.id} product={product} handleAddProduct={handleAddProduct} />
-  ));
   }
 
   useEffect(() => {
@@ -85,12 +86,6 @@ function App() {
 
       <Switch>
           <Route path="/order">
-            <CartContainer
-              handleAddProduct={handleAddProduct}
-              shoppingCart={shoppingCart}
-              handleCheckout={handleCheckout}
-              handleRemoveProduct={handleRemoveProduct}
-            />
             <OrderForm
               shoppingCart={shoppingCart}
               handleCheckout={handleCheckout}
@@ -113,9 +108,15 @@ function App() {
               handleCheckout={handleCheckout}
               handleRemoveProduct={handleRemoveProduct}
               />
-            <form action="http://localhost:3000/order">
+            <a href="http://localhost:3000/order" onClick={()=>handleCheckout()}>Checkout</a>
+
+
+            {/* <li>
+              <Link to="/order">Proceed to Checkout</Link>
+            </li> */}
+            {/* <form action="http://localhost:3000/order">
               <button onClick={() => handleCheckout()} className="orderCheckout">🛒 <em>Proceed to Checkout</em>🛒</button>
-            </form>  
+            </form>   */}
             </div>
           </Route>
       </Switch>

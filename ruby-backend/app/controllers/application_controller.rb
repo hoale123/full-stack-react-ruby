@@ -24,7 +24,12 @@ class ApplicationController < Sinatra::Base
     users.to_json
   end
 
-  
+  post "/orders/:id" do
+    orders = Order.create(params[:id])
+    orders.update(likes: params[:likes])
+    orders.to_json
+    # {message: likes added}
+  end
 
 
 end
