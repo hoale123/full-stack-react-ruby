@@ -10,7 +10,7 @@ function CartContainer({ shoppingCart, handleAddProduct, handleRemoveProduct, ha
     return(
         <aside className="block col-1">
         <h2>My Shopping Cart</h2>
-        <div>
+        <div className="col-4">
           {shoppingCart.length === 0 && <h3>Cart is Empty</h3>}
         </div>
         {shoppingCart.map((item) => (

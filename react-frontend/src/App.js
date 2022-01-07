@@ -4,7 +4,16 @@ import { useEffect, useState } from "react"
 import Products from './Products';
 import Header from './Header';
 import CartContainer from './CartContainer';
-import ShoppingCart from './ShoppingCart';
+import OrderForm from './OrderForm';
+
+
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -61,28 +70,48 @@ function App() {
     const updatedListings = sortedProducts.filter((product)=> product.name.toLowerCase().includes(search.toLowerCase()) || product.description.toLowerCase().includes(search.toLowerCase()));
 
   return (
+  <BrowserRouter>
+
     <div className="App">
       <h1>Flatiron School: Phase 3 Project</h1>
       <h3>Created by Hoa Le and Morgan Byrne</h3>
-      <Header 
-        handleSearch={handleSearch}  
-        sortBy={sortBy} 
-        handleSort={handleSort}
-      />
-      <h2>Shop All</h2>
-      <Products  
-      products={updatedListings} 
-      handleAddProduct={handleAddProduct}
-      />
-      <div className="col-4">
-          <CartContainer
-          handleAddProduct={handleAddProduct}
-          shoppingCart={shoppingCart}
-          handleCheckout={handleCheckout}
-          handleRemoveProduct={handleRemoveProduct}
+      <nav >
+          <Link to="/">Home</Link>
+          <br/>
+          <Link to="/order">Shopping Cart</Link>
+        </nav>
+
+
+      <Switch>
+          <Route path="/order">
+            <OrderForm
+              handleCheckout={handleCheckout}
+            />
+          </Route>
+          <Route path="/">
+          <Header 
+            handleSearch={handleSearch}  
+            sortBy={sortBy} 
+            handleSort={handleSort}
           />
-        </div>
+            <Products
+              products={updatedListings} 
+              handleAddProduct={handleAddProduct}
+            />
+            <div className="col-4">
+                <CartContainer
+                handleAddProduct={handleAddProduct}
+                shoppingCart={shoppingCart}
+                handleCheckout={handleCheckout}
+                handleRemoveProduct={handleRemoveProduct}
+                />
+            </div>
+          </Route>
+
+      </Switch>
+
     </div>
+    </BrowserRouter>
   )
 }
 
