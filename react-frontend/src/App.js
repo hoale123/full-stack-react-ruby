@@ -39,8 +39,11 @@ function App() {
     }
   }
 
-  function handleCheckout(cart) {
-    console.log("ready to checkout")
+  function handleCheckout(shoppingCart) {
+    return shoppingCart.map((product)=> (
+      console.log(product)
+      // <ProductCard key={product.id} product={product} handleAddProduct={handleAddProduct} />
+  ));
   }
 
   useEffect(() => {
@@ -49,15 +52,15 @@ function App() {
     .then(data=>setProducts(data))
 }, [])
 
-   function handleSearch(searchText) {
-        setSearch(searchText);
-   }
+  function handleSearch(searchText) {
+      setSearch(searchText);
+  }
 
-   function handleSort(dropdown) {
-       setSortBy(dropdown)
-   }
+  function handleSort(dropdown) {
+      setSortBy(dropdown)
+  }
 
-   const sortedProducts = [...products].sort((a, b) => {
+  const sortedProducts = [...products].sort((a, b) => {
     if (sortBy === "name") {
       return a.name - b.name;
     } else if (sortBy === "price"){
@@ -67,11 +70,10 @@ function App() {
     }
   });
 
-    const updatedListings = sortedProducts.filter((product)=> product.name.toLowerCase().includes(search.toLowerCase()) || product.description.toLowerCase().includes(search.toLowerCase()));
+  const updatedListings = sortedProducts.filter((product)=> product.name.toLowerCase().includes(search.toLowerCase()) || product.description.toLowerCase().includes(search.toLowerCase()));
 
   return (
   <BrowserRouter>
-
     <div className="App">
       <h1>Flatiron School: Phase 3 Project</h1>
       <h3>Created by Hoa Le and Morgan Byrne</h3>
@@ -80,7 +82,6 @@ function App() {
           <br/>
           <Link to="/order">Shopping Cart</Link>
         </nav>
-
 
       <Switch>
           <Route path="/order">
@@ -91,6 +92,7 @@ function App() {
               handleRemoveProduct={handleRemoveProduct}
             />
             <OrderForm
+              shoppingCart={shoppingCart}
               handleCheckout={handleCheckout}
             />
           </Route>
@@ -112,7 +114,7 @@ function App() {
               handleRemoveProduct={handleRemoveProduct}
               />
             <form action="http://localhost:3000/order">
-              <button onClick={() => handleCheckout(shoppingCart)} className="orderCheckout">🛒 <em>Proceed to Checkout</em>🛒</button>
+              <button onClick={() => handleCheckout()} className="orderCheckout">🛒 <em>Proceed to Checkout</em>🛒</button>
             </form>  
             </div>
           </Route>

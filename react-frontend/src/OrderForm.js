@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import CartContainer from "./CartContainer";
+import ProductCard from "./ProductCard";
 
-function OrderForm({ handleAddProduct, shoppingCart, handleCheckout, handleRemoveProduct}) {
+function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemoveProduct}) {
+    
     const [formData, setFormData] = useState({
         name: "", 
         email: "",
