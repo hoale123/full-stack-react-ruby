@@ -20,13 +20,13 @@ Product.create(name:"the TRANSFORMATION mala", description:"bring balance, clari
 puts "Creating Orders..."
 
 20.times{Order.create(
-    user_id: rand(1..5),
-    product_id: rand(1..5),
+    user_id: rand(1..20),
+    product_id: rand(1..12),
     status: "available",
     quantity: rand(1..5)
 )}
 
-puts "Creating Orders..."
+puts "Creating Users..."
 
 20.times{User.create(
     full_name:Faker::Name.name,

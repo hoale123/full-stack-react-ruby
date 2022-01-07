@@ -3,14 +3,18 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/products" do
-    products = Product.all
-    products.to_json
+    Product.all.to_json
   end
 
-    
-  # get "/test" do
-  #   { message: "Good luck with your project!" }.to_json
-  # end
+  get "/users" do
+    User.all.to_json
+  end
+
+  get "/orders" do 
+    Order.all.to_json
+  end
+
+  
 
 
 end

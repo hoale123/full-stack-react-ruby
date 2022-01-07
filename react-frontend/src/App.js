@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Products from './Products';
 import Header from './Header';
 import CartContainer from './CartContainer';
-import ShoppingCart from './ShoppingCart';
+import OrderForm from './OrderForm';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -73,6 +73,7 @@ function App() {
             // onRemoveStock={handleRemoveStock}
           />
         </div>
+        <OrderForm handleCheckout={handleCheckout} />
     </div>
   )
 }

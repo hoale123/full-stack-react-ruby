@@ -1,5 +1,16 @@
 import React from "react";
+import styled from 'styled-components';
+
 // import ProductCard from "./ProductCard";
+
+const Button = styled.button`
+  color: black;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid black;
+  border-radius: 3px;
+`;
 
 function CartContainer({ shoppingCart, handleAddProduct, onRemove, handleCheckout }) {
   // const productList = products.map(product => (
@@ -7,7 +18,7 @@ function CartContainer({ shoppingCart, handleAddProduct, onRemove, handleCheckou
   // ))
     return(
         <aside className="block col-1">
-        <h2>My Shopping Cart</h2>
+        <h2>Shopping Cart</h2>
         <div>
           {shoppingCart.length === 0 && <h3>Cart is Empty</h3>}
         </div>
@@ -27,8 +38,10 @@ function CartContainer({ shoppingCart, handleAddProduct, onRemove, handleCheckou
               {item.qty} x ${item.price.toFixed(2)}
             </div>
             <br></br>
-            <button onClick={() => handleCheckout(shoppingCart)} className="orderCheckout">🛒 <em>Proceed to Checkout</em>🛒</button>
+            <Button onClick={() => handleCheckout(shoppingCart)} className="orderCheckout">🛒 <em> Proceed to Checkout </em>🛒</Button>
+            
           </div>
+         
         ))}
       </aside>
     )
