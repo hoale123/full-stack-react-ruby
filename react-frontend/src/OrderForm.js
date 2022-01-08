@@ -3,7 +3,6 @@ import ProductCard from "./ProductCard";
 
 function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemoveProduct}) {
 
-
     function renderCart() {
         return shoppingCart.map((product)=> (     
           <ProductCard key={product.id} product={product} />
@@ -16,42 +15,37 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
     });
     
     function handleChange(e) {
-        console.log(e.target.value)
         setFormData({
             ...formData, 
             [e.target.name]: e.target.value,
         });
+        localStorage["{e.target.name}"] = e.target.value;
+        console.log(localStorage)
     }
     
     //this Submit function is not working yet I think i need to fix the form fields 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(formData)
 
-        console.log("i have been submitted!")
-        // fetch("http://localhost:9292/orders", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         ...formData, 
-        //         user_id: "",
-        //         product_id: "",
-        //         status: "New",
-        //         created_at: "today"
-        //     }),
-        // })
-        // .then(r=>r.json())
-        // .then(data=>console.log(data))
+        fetch("http://localhost:9292/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                ...formData, 
+            }),
+        })
+        .then(r=>r.json())
+        .then(data=>console.log(data))
     }
     
     return (
         <div className="container">
             <h2>Order Checkout</h2>
                 <ul className="cards">{renderCart()}</ul>
-            <h3>Order Details</h3>
-                <form className="order-form" onSubmit={()=>handleSubmit()}>
+                <form className="order-form" onSubmit={handleSubmit}>
+                <label name="name">Your name:</label>
                 <input
                 type="text"
                 name="name"
@@ -61,7 +55,7 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
                 className="input-text"
                 />
                 <br />
-                <h3>Email</h3>
+                <label name="email">Email:</label>
                 <input
                 type="text"
                 name="email"
@@ -72,7 +66,6 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
                 />
                 <br />
                 <input
-                onSubmit={handleSubmit}
                 type="submit"
                 name="submit"
                 value="Submit Order"
