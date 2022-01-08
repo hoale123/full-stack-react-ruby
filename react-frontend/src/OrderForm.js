@@ -3,7 +3,6 @@ import ProductCard from "./ProductCard";
 
 function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemoveProduct}) {
 
-
     function renderCart() {
         return shoppingCart.map((product)=> (     
           <ProductCard key={product.id} product={product} />
@@ -16,15 +15,17 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
     });
     
     function handleChange(e) {
-        console.log(e.target.value)
         setFormData({
             ...formData, 
             [e.target.name]: e.target.value,
         });
+        localStorage["{e.target.name}"] = e.target.value;
+        console.log(localStorage)
     }
     
     //this Submit function is not working yet I think i need to fix the form fields 
     function handleSubmit(e) {
+        debugger
         e.preventDefault();
         console.log(formData)
 
@@ -50,8 +51,8 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
         <div className="container">
             <h2>Order Checkout</h2>
                 <ul className="cards">{renderCart()}</ul>
-            <h3>Order Details</h3>
-                <form className="order-form" onSubmit={()=>handleSubmit()}>
+                <form className="order-form">
+                <label name="name">Your name:</label>
                 <input
                 type="text"
                 name="name"
@@ -61,7 +62,7 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
                 className="input-text"
                 />
                 <br />
-                <h3>Email</h3>
+                <label name="email">Email:</label>
                 <input
                 type="text"
                 name="email"
