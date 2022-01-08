@@ -40,8 +40,8 @@ function App() {
   }
 
   //MAKE THIS AN ORDER OBJECT TO PASS UP FROM THE CART TO THE ORDER FORM 
-  function handleCheckout(itemPrice, taxPrice, discountPrice, totalPrice) {
-    console.log(itemPrice, taxPrice, discountPrice, totalPrice)
+  function handleCheckout() {
+    console.log("handling checkout")
   }
 
   useEffect(() => {
