@@ -22,6 +22,7 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
     }
     
     function handleSubmit(e) {
+        e.preventDefault();
 
         console.log("i have been submitted!")
         // fetch("http://localhost:9292/orders", {
@@ -43,11 +44,11 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
     
     return (
         <div className="container">
-            <h3>Order Details</h3>
+            <h2>Order Checkout</h2>
                 <ul className="cards">{renderCart()}</ul>
             <h3>Order Total</h3>   
                 <p></p> 
-            <h3>Order Checkout</h3>
+            <h3>Order Details</h3>
                 <form className="order-form" onSubmit={()=>handleSubmit()}>
                 <input
                 type="text"
