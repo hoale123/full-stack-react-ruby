@@ -25,33 +25,26 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
     
     //this Submit function is not working yet I think i need to fix the form fields 
     function handleSubmit(e) {
-        debugger
         e.preventDefault();
-        console.log(formData)
 
-        console.log("i have been submitted!")
-        // fetch("http://localhost:9292/orders", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         ...formData, 
-        //         user_id: "",
-        //         product_id: "",
-        //         status: "New",
-        //         created_at: "today"
-        //     }),
-        // })
-        // .then(r=>r.json())
-        // .then(data=>console.log(data))
+        fetch("http://localhost:9292/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                ...formData, 
+            }),
+        })
+        .then(r=>r.json())
+        .then(data=>console.log(data))
     }
     
     return (
         <div className="container">
             <h2>Order Checkout</h2>
                 <ul className="cards">{renderCart()}</ul>
-                <form className="order-form">
+                <form className="order-form" onSubmit={handleSubmit}>
                 <label name="name">Your name:</label>
                 <input
                 type="text"
@@ -73,7 +66,6 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
                 />
                 <br />
                 <input
-                onSubmit={handleSubmit}
                 type="submit"
                 name="submit"
                 value="Submit Order"

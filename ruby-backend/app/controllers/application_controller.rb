@@ -1,3 +1,5 @@
+require 'pry'
+
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
@@ -24,11 +26,13 @@ class ApplicationController < Sinatra::Base
     users.to_json
   end
 
-  post "/orders/:id" do
-    orders = Order.create(params[:id])
-    orders.update(likes: params[:likes])
-    orders.to_json
-    # {message: likes added}
+  post "/users" do
+    user = User.create(
+      full_name: params[:name],
+      email: params[:email],
+      created_at: params[:created_at],
+    )
+    user.to_json
   end
 
 
