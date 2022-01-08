@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import ProductCard from "./ProductCard";
 
 function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemoveProduct}) {
 
-    
+    function renderCart() {
+        return shoppingCart.map((product)=> (     
+          <ProductCard key={product.id} product={product} />
+        ));
+    }
+
     const [formData, setFormData] = useState({
         name: "", 
         email: "",
@@ -38,7 +44,9 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
     return (
         <div className="container">
             <h3>Order Details</h3>
-                <p></p>
+                <ul className="cards">{renderCart()}</ul>
+            <h3>Order Total</h3>   
+                <p></p> 
             <h3>Order Checkout</h3>
                 <form className="order-form" onSubmit={()=>handleSubmit()}>
                 <input
