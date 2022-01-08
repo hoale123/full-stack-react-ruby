@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 
 function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemoveProduct}) {
 
+
     function renderCart() {
         return shoppingCart.map((product)=> (     
           <ProductCard key={product.id} product={product} />
@@ -48,7 +49,7 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
                 <ul className="cards">{renderCart()}</ul>
             <h3>Order Total</h3>   
                 <p></p> 
-            <h3>Order Details</h3>
+            <h3>Your Name</h3>
                 <form className="order-form" onSubmit={()=>handleSubmit()}>
                 <input
                 type="text"
@@ -59,6 +60,7 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
                 className="input-text"
                 />
                 <br />
+                <h3>Email</h3>
                 <input
                 type="text"
                 name="email"
