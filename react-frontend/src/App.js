@@ -29,6 +29,8 @@ function App() {
     } else {
       setCart([...shoppingCart, { ...product, qty: 1 }]);
     }
+    console.log(shoppingCart)
+    //this is returning an empty array need to return product details
   }
 
   function handleRemoveProduct(product) {
@@ -108,15 +110,6 @@ function App() {
               handleCheckout={handleCheckout}
               handleRemoveProduct={handleRemoveProduct}
               />
-            <a href="http://localhost:3000/order" onClick={()=>handleCheckout()}>Checkout</a>
-
-
-            {/* <li>
-              <Link to="/order">Proceed to Checkout</Link>
-            </li> */}
-            {/* <form action="http://localhost:3000/order">
-              <button onClick={() => handleCheckout()} className="orderCheckout">🛒 <em>Proceed to Checkout</em>🛒</button>
-            </form>   */}
             </div>
           </Route>
       </Switch>

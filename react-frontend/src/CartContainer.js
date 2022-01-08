@@ -7,6 +7,11 @@ function CartContainer({ shoppingCart, handleAddProduct, handleRemoveProduct, ha
     const discountPrice = itemPrice > 200 ? itemPrice * 0.10 : 0;
     const totalPrice = itemPrice + taxPrice - discountPrice
 
+    function handleSubmit(e) {
+      e.preventDefault();
+      console.log(e);
+    }
+
     return(
         <aside className="block col-1">
         <h2>My Shopping Cart</h2>
@@ -50,7 +55,9 @@ function CartContainer({ shoppingCart, handleAddProduct, handleRemoveProduct, ha
                 <div className="col-2"><strong>Total Price</strong></div>
                 <div className="col-1 text-right"><strong>${totalPrice.toFixed(2)}</strong></div>
               </div>
-
+              <form>
+                <a href="http://localhost:3000/order" onSubmit={()=>handleSubmit()}>🛒  Checkout 🛒 </a>
+              </form>
               </>
             ) }
       </aside>

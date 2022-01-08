@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemoveProduct}) {
 
-    console.log(shoppingCart)
     
     const [formData, setFormData] = useState({
         name: "", 
