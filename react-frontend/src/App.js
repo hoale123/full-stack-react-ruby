@@ -40,8 +40,8 @@ function App() {
   }
 
   //MAKE THIS AN ORDER OBJECT TO PASS UP FROM THE CART TO THE ORDER FORM 
-  function handleCheckout(cartObject) {
-    console.log(cartObject);
+  function handleCheckout() {
+    console.log("handling checkout")
   }
 
   useEffect(() => {

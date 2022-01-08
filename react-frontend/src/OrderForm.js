@@ -16,14 +16,17 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
     });
     
     function handleChange(e) {
+        console.log(e.target.value)
         setFormData({
             ...formData, 
             [e.target.name]: e.target.value,
         });
     }
     
+    //this Submit function is not working yet I think i need to fix the form fields 
     function handleSubmit(e) {
         e.preventDefault();
+        console.log(formData)
 
         console.log("i have been submitted!")
         // fetch("http://localhost:9292/orders", {
@@ -47,9 +50,7 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
         <div className="container">
             <h2>Order Checkout</h2>
                 <ul className="cards">{renderCart()}</ul>
-            <h3>Order Total</h3>   
-                <p></p> 
-            <h3>Your Name</h3>
+            <h3>Order Details</h3>
                 <form className="order-form" onSubmit={()=>handleSubmit()}>
                 <input
                 type="text"
@@ -71,6 +72,7 @@ function OrderForm({ shoppingCart, handleAddProduct, handleCheckout, handleRemov
                 />
                 <br />
                 <input
+                onSubmit={handleSubmit}
                 type="submit"
                 name="submit"
                 value="Submit Order"
