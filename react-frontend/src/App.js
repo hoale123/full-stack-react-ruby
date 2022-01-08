@@ -25,12 +25,10 @@ function App() {
   function handleAddProduct(product) {
     const inCart = shoppingCart.find((p) => p.id === product.id);
     if (inCart) {
-      setCart(shoppingCart.map(p => p.id === product.id ? {...inCart, qty: inCart.qty + 1}:p))
+      setCart(shoppingCart.map(p => p.id === product.id ? {...shoppingCart, qty: inCart.qty + 1}:p))
     } else {
       setCart([...shoppingCart, { ...product, qty: 1 }]);
     }
-    console.log(shoppingCart)
-    //this is returning an empty array need to return product details
   }
 
   function handleRemoveProduct(product) {
@@ -42,7 +40,7 @@ function App() {
     }
   }
 
-  function handleCheckout(shoppingCart) {
+  function handleCheckout() {
     console.log(shoppingCart)
     // return shoppingCart.map((product)=> (
     //   console.log(product)
@@ -83,7 +81,7 @@ function App() {
       <nav >
           <Link to="/">Home</Link>
           <br/>
-          <Link to="/order">Shopping Cart</Link>
+          <Link to="/order" onClick={()=>handleCheckout()}>Shopping Cart</Link>
         </nav>
 
       <Switch>
