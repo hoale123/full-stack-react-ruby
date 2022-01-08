@@ -12,7 +12,6 @@ import {
   Switch,
   Route,
   Link,
-  useHistory
 } from "react-router-dom";
 
 
@@ -40,11 +39,9 @@ function App() {
     }
   }
 
-  function handleCheckout() {
-    console.log(shoppingCart)
-    // return shoppingCart.map((product)=> (
-    //   console.log(product)
-      // <ProductCard key={product.id} product={product} handleAddProduct={handleAddProduct} />
+  //MAKE THIS AN ORDER OBJECT TO PASS UP FROM THE CART TO THE ORDER FORM 
+  function handleCheckout(itemPrice, taxPrice, discountPrice, totalPrice) {
+    console.log(itemPrice, taxPrice, discountPrice, totalPrice)
   }
 
   useEffect(() => {
