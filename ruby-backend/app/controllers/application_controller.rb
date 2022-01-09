@@ -21,19 +21,19 @@ class ApplicationController < Sinatra::Base
     orders.to_json
   end
 
-  get "/users" do
-    users = User.all
-    users.to_json
-  end
+  # get "/users" do
+  #   users = User.all
+  #   users.to_json
+  # end
 
-  post "/users" do
-    user = User.create(
-      full_name: params[:name],
-      email: params[:email],
-      created_at: params[:created_at],
-    )
-    user.to_json
-  end
+  # post "/users" do
+  #   user = User.create(
+  #     name: params[:name],
+  #     email: params[:email],
+  #     created_at: params[:created_at],
+  #   )
+  #   user.to_json
+  # end
 
 
 end

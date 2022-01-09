@@ -2,10 +2,16 @@ import React from 'react';
 import './App.css';
 import { useEffect, useState } from "react"
 import Products from './Products';
-import Header from './Header';
+import Headers from './Headers';
 import CartContainer from './CartContainer';
 import OrderForm from './OrderForm';
-
+import { Header, Segment, } from "semantic-ui-react";
+// import "semantic-ui-css/semantic.min.css";
+import Navbar from "./Navbar";
+import LogInPage from "./LoginPage"
+import Logout from "./Logout";
+import EditProfile from "./EditProfile";
+import Register from "./Register";
 
 import {
   BrowserRouter,
@@ -20,6 +26,17 @@ function App() {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [shoppingCart, setCart] = useState([]);
+  const [user, setUser] = useState(localStorage.getItem("user"));
+
+
+  useEffect(() => {
+    fetch("http://localhost:9292/me", { credentials: "include" })
+      .then((r) => r.json())
+      .then((data) => {
+        setUser(data.user);
+        localStorage.setItem("user", data.user);
+      });
+  }, []);
 
   function handleAddProduct(product) {
     const inCart = shoppingCart.find((p) => p.id === product.id);
@@ -73,6 +90,20 @@ function App() {
   return (
   <BrowserRouter>
     <div className="App">
+    <Navbar
+        user={user}
+        // cartDrinks={cartDrinks}
+        style={{ marginBottom: "0px", paddingBottom: "0px" }}
+      />
+      <Segment style={{ marginTop: "0px" }}>
+        <Link to="/">
+          <div className="ui center aligned header"> 
+            <Header as="h2">
+              Welcome to mala jewelry 
+            </Header>
+          </div>
+        </Link>
+      </Segment>
       <h1>Flatiron School: Phase 3 Project</h1>
       <h3>Created by Hoa Le and Morgan Byrne</h3>
       <nav >
@@ -82,6 +113,24 @@ function App() {
         </nav>
 
       <Switch>
+      <Route exact path="/login">
+          <LogInPage setUser={setUser} user={user} />
+        </Route>
+        <Route exact path="/logout">
+          <Logout setUser={setUser} />
+        </Route>
+
+        <Route exact path="/register">
+          <Register setUser={setUser}/>
+        </Route>
+
+        <Route exact path="/edit-profile">
+          <EditProfile user={user} setUser={setUser} />
+        </Route>
+
+        {/* <Route path="*">
+          <h1>404 not found</h1>
+        </Route> */}
           <Route path="/order">
             <OrderForm
               shoppingCart={shoppingCart}
@@ -89,7 +138,7 @@ function App() {
             />
           </Route>
           <Route path="/">
-            <Header 
+            <Headers 
               handleSearch={handleSearch}  
               sortBy={sortBy} 
               handleSort={handleSort}
@@ -114,3 +163,5 @@ function App() {
 }
 
 export default App;
+
+
