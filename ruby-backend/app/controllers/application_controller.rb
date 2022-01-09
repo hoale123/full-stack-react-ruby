@@ -21,10 +21,10 @@ class ApplicationController < Sinatra::Base
     orders.to_json
   end
 
-  # get "/users" do
-  #   users = User.all
-  #   users.to_json
-  # end
+  get "/users" do
+    users = User.all
+    users.to_json
+  end
 
   # post "/users" do
   #   user = User.create(
